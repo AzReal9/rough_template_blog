@@ -1,0 +1,25 @@
+
+    <%- include("partials/header.ejs") %>
+
+    <h1>All Posts</h1>
+  <ul class="post-gallery">
+    <% posts.forEach(post => { %>
+      <li>
+        <div class="post">
+            <h2 class="post-title"><%= post.title %></h2>
+            <p class="post-content"><%= post.content %></p>
+        </div>
+        <a class="button" href="/post/<%= post.id %>/edit">Edit</a>
+        <a class="button" href="/post/<%= post.id %>/delete">Delete</a>
+      </li>
+    <% }) %>
+  </ul>
+  
+  <h2>Create New Post</h2>
+  <form action="/post" method="POST">
+    <input class="title" type="text" name="title" placeholder="Title" required><br>
+    <textarea name="content" placeholder="Blog info" required></textarea><br>
+    <button type="submit">Create Post</button>
+  </form>
+
+  <%- include("partials/footer.ejs") %>
